@@ -14,7 +14,7 @@ int main() {
     first.id = 101;
     strcpy(first.name, "Algebra");
     second.id = 102;
-    strcpy(first.name, "Math");
+    strcpy(second.name, "Math");
 
     /* write records to a file */
     fptr = fopen("info.dat", "wb");
