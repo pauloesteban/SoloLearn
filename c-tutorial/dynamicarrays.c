@@ -10,10 +10,10 @@ typedef struct {
 void init_array(dyn_array *arr);
 void increase_array(dyn_array *arr, int num_elements);
 void add_element(dyn_array *arr, int element);
+void display_array(dyn_array arr);
 
 int main() {
     dyn_array arr;
-    int i;
 
     /* initialize array */
     init_array(&arr);
@@ -25,8 +25,7 @@ int main() {
     add_element(&arr, 50);
 
     /* display array elements */
-    for (i=0; i < arr.cap; i++)
-        printf("Element %d: %d\n", i, arr.elements[i]);
+    display_array(arr);
 
     return 0;
 }
@@ -44,9 +43,18 @@ void increase_array(dyn_array *arr, int num_elements) {
 }
 
 void add_element(dyn_array *arr, int element) {
+    int i;
+
     if (arr->size < arr->cap) {
         arr->elements[arr->size] = element; /* add element to array */
     }
     else
         printf("Need to expand array.");
+}
+
+void display_array(dyn_array arr) {
+    int i;
+
+    for (i=0; i < arr.cap; i++)
+        printf("Element %d: %d\n", i, arr.elements[i]);
 }
