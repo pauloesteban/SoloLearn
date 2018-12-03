@@ -9,6 +9,7 @@ typedef struct {
 
 void init_array(dyn_array *arr);
 void increase_array(dyn_array *arr, int num_elements);
+void add_element(dyn_array *arr, int element);
 
 int main() {
     dyn_array arr;
@@ -16,18 +17,12 @@ int main() {
 
     /* initialize array */
     init_array(&arr);
-    printf("%d\n", arr.size);
 
     /* expand by 5 more elements */
     increase_array(&arr, 5);
 
     /* add an element and increase size */
-    if (arr.size < arr.cap) {
-        arr.elements[arr.size] = 50;    /* add element to array */
-        arr.size++;
-    }
-    else
-        printf("Need to expand array.");
+    add_element(&arr, 50);
 
     /* display array elements */
     for (i=0; i < arr.cap; i++)
@@ -46,4 +41,12 @@ void increase_array(dyn_array *arr, int num_elements) {
     arr->elements = realloc(arr->elements, (num_elements + arr->cap)*sizeof(arr->elements));
     if (arr->elements != NULL)
         arr->cap += num_elements;
+}
+
+void add_element(dyn_array *arr, int element) {
+    if (arr->size < arr->cap) {
+        arr->elements[arr->size] = element; /* add element to array */
+    }
+    else
+        printf("Need to expand array.");
 }
