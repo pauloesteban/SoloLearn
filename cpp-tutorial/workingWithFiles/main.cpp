@@ -11,10 +11,13 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
+    // file object
     ofstream MyFile;
+    // open the file
     MyFile.open("test.txt");
-    MyFile << "Some text. \n";
+    // write into the file
+    MyFile << "I love C++. \n";
+    // close the file
     MyFile.close();
     
     return 0;
