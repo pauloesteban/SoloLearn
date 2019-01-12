@@ -11,11 +11,14 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
+    string line;
+    
     // open file
     ofstream MyFile("anotherTest.txt");
     // check if the file is open and ready
     if (MyFile.is_open()) {
         // write into the file
+        MyFile << "I love C++ \n";
         MyFile << "This is awesome! \n";
     }
     else {
@@ -23,6 +26,15 @@ int main(int argc, const char * argv[]) {
     }
     // close the file
     MyFile.close();
+    
+    // read the file
+    ifstream MyFile2("anotherTest.txt");
+    // read file line by line
+    while(getline(MyFile2, line)) {
+        cout << line << '\n';
+    }
+    // close file
+    MyFile2.close();
     
     return 0;
 }
